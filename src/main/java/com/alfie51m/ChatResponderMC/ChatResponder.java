@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -13,7 +14,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ChatResponder extends JavaPlugin implements Listener {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ChatResponder extends JavaPlugin implements Listener, TabCompleter {
 
     private boolean verboseMode;
 
@@ -26,6 +31,7 @@ public class ChatResponder extends JavaPlugin implements Listener {
         }
         saveDefaultConfig();
         loadConfigValues();
+        this.getCommand("chatresponder").setTabCompleter(this); // Register tab completer
         getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("ChatResponderMC enabled!");
     }
@@ -89,5 +95,20 @@ public class ChatResponder extends JavaPlugin implements Listener {
             return true;
         }
         return false;
+    }
+
+    // Tab completer
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (command.getName().equalsIgnoreCase("chatresponder")) {
+            if (args.length == 1) { // Completing first argument
+                List<String> completions = new ArrayList<>();
+                if ("reload".startsWith(args[0].toLowerCase())) {
+                    completions.add("reload");
+                }
+                return completions;
+            }
+        }
+        return Collections.emptyList();
     }
 }
