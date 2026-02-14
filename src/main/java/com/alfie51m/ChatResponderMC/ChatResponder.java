@@ -1,4 +1,4 @@
-package com.alfie51m.mCStatusChecker;
+package com.alfie51m.ChatResponderMC;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -13,7 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class MCStatusChecker extends JavaPlugin implements Listener {
+public class ChatResponder extends JavaPlugin implements Listener {
 
     private boolean verboseMode;
 
@@ -27,7 +27,7 @@ public class MCStatusChecker extends JavaPlugin implements Listener {
         saveDefaultConfig();
         loadConfigValues();
         getServer().getPluginManager().registerEvents(this, this);
-        getLogger().info("MCStatusChecker enabled!");
+        getLogger().info("ChatResponderMC enabled!");
     }
 
     // Load config values
@@ -78,14 +78,14 @@ public class MCStatusChecker extends JavaPlugin implements Listener {
     // Handle commands
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("mcstatuschecker")) {
+        if (command.getName().equalsIgnoreCase("chatresponder")) {
             if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
                 reloadConfig();
                 loadConfigValues();
-                sender.sendMessage(ChatColor.GREEN + "MCStatusChecker config reloaded!");
+                sender.sendMessage(ChatColor.GREEN + "ChatResponderMC config reloaded!");
                 return true;
             }
-            sender.sendMessage(ChatColor.RED + "Usage: /mcstatuschecker reload");
+            sender.sendMessage(ChatColor.RED + "Usage: /chatresponder reload");
             return true;
         }
         return false;

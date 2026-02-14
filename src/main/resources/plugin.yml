@@ -1,15 +1,15 @@
-name: MCStatusChecker
+name: ChatResponderMC
 version: ${version}
-main: com.alfie51m.mCStatusChecker.MCStatusChecker
+main: com.alfie51m.ChatResponderMC.ChatResponder
 api-version: '1.21'
 softdepend: [PlaceholderAPI]
 
 commands:
-  mcstatuschecker:
-    description: Reloads the MCStatusChecker configuration.
-    usage: /mcstatuschecker reload
-    permission: mcstatuschecker.reload
+  chatresponder:
+    description: Reloads the ChatResponderMC configuration.
+    usage: /chatresponder reload
+    permission: chatresponder.reload
 permissions:
-  mcstatuschecker.reload:
+  chatresponder.reload:
     description: Allows player to reload the plugin configuration.
     default: op
