@@ -2,7 +2,6 @@
 
 **ChatResponderMC** is a simple Spigot plugin for Minecraft servers running version 1.21 or later. This plugin allows you to define custom messages sent to a player depending on the result of a placeholder when mentioning a username in Minecraft chat.
 
----
 ## Example Use
 ChatResponderMC automatically responds to player messages based on placeholders.
 
@@ -14,23 +13,24 @@ For example, using `%essentials_afk%`, if a player who is currently AFK is menti
 
 You can define multiple placeholders to create custom responses for different plugins or conditions.
 
+---
+
 ## Example Config
 
 ```yaml
-verbose: true # Set to false to disable detailed logs
+verbose: false # Set to false to disable detailed logs
 
 afk_check:
   placeholder: "%essentials_afk%"
   expected_result: "yes"
-  success_message: "&a{player} is currently AFK!"
-  failure_message: "&c{player} is not AFK." # Set to "disabled" to not send a message on false output
+  true_message: "&7&o{player} is currently AFK."
+  false_message: "disabled" # No false message for this placeholder
 
 placeholder2:
   placeholder: "%otherplugin_someplaceholder%"
   expected_result: "true"
-  success_message: "&a{player} is Here!"
-  failure_message: "disabled" # No failure message for this placeholder
-
+  true_message: "&a{player} is here!"
+  false_message: "&c{player} is not here." # Set to "disabled" to not send a message on false output
 ```
 
 ## Installation

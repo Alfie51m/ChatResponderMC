@@ -55,8 +55,8 @@ public class ChatResponder extends JavaPlugin implements Listener {
 
                     String placeholder = section.getString("placeholder", "");
                     String expectedResult = section.getString("expected_result", "");
-                    String successMessage = ChatColor.translateAlternateColorCodes('&', section.getString("success_message", ""));
-                    String failureMessage = ChatColor.translateAlternateColorCodes('&', section.getString("failure_message", ""));
+                    String successMessage = ChatColor.translateAlternateColorCodes('&', section.getString("true_message", ""));
+                    String failureMessage = ChatColor.translateAlternateColorCodes('&', section.getString("false_message", ""));
 
                     String placeholderResult = PlaceholderAPI.setPlaceholders(target, placeholder);
 
